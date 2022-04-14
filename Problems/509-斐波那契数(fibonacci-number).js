@@ -23,3 +23,20 @@ F(n) = F(n - 1) + F(n - 2)，其中 n > 1
 解释：F(4) = F(3) + F(2) = 2 + 1 = 3
 **/
 
+// 1.使用递归思路 
+var fib = function (n) {
+  return n <= 1 ? n : fib(n - 2) + fib(n - 1);
+}
+// 2.使用非递归 动态规划 滚动数组
+var fib = function (n) {
+  if (n <= 1) {
+    return n;
+  }
+  let prev = 0, now = 0, next = 1;
+  for (let i = 2; i <= n; i++) {
+    prev = now;
+    now = next;
+    next = prev + now;
+  }
+  return next;
+}
